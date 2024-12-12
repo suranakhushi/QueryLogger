@@ -3,7 +3,8 @@ defmodule QueryloggingWeb.Schema do
 
   query do
     field :hello, :string do
-      resolve fn _, _ -> {:ok, "Hello World!"} end
+      middleware(QueryloggingWeb.Middleware.QueryLogger)
+      resolve fn _, _, _ -> {:ok, "Hello, world!"} end
     end
   end
 end

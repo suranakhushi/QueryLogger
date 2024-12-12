@@ -24,16 +24,12 @@ defmodule QueryloggingWeb.Router do
   scope "/api" do
     pipe_through :api
 
-    # GraphiQL interface (only in dev environment)
+
     if Mix.env() == :dev do
       forward "/graphiql", Absinthe.Plug.GraphiQL, schema: QueryloggingWeb.Schema
     end
-
-    # GraphQL endpoint (POST method for queries and mutations)
     forward "/graphql", Absinthe.Plug, schema: QueryloggingWeb.Schema
   end
-
-  # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:querylogging, :dev_routes) do
     import Phoenix.LiveDashboard.Router
 

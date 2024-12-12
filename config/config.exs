@@ -10,7 +10,7 @@ config :querylogging, Querylogging.Repo,
   username: "khushi",
   password: "anupchand@18",
   hostname: "localhost",
-  database: "query_logging",  # Use a different database for development
+  database: "query_logging ",  # Use a different database for development
   pool_size: 10
 
 config :querylogging,
