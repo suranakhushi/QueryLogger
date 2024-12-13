@@ -31,7 +31,7 @@ defmodule Querylogging.MixProject do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [
+    [ {:csv, "~> 2.4"},
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
       {:phoenix, "~> 1.7.17"},

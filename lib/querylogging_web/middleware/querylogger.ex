@@ -39,15 +39,7 @@ defmodule QueryloggingWeb.Middleware.QueryLogger do
 
       })
 
-    raw_entry = %QueryLogEntry{
-      query_string: query_string,
-        execution_time: execution_time,
-        error_message: error_message,
-        created_at: DateTime.utc_now() |> DateTime.truncate(:second),
-        updated_at: DateTime.utc_now() |> DateTime.truncate(:second)
-    }
-    #Logger.debug("Changeset: #{changeset}")
-    case Repo.insert(raw_entry) do
+    case Repo.insert(changeset) do
       {:ok, entry} ->
         Logger.debug("Successfully logged #{entry.id} to database")
       {:error, changeset_error} ->

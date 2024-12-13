@@ -23,6 +23,7 @@ defmodule QueryloggingWeb.Router do
   # Correct setup for GraphiQL and GraphQL routes
   scope "/api" do
     pipe_through :api
+    get "/export_query_logs", QueryloggingWeb.ExportController, :export_logs
 
 
     if Mix.env() == :dev do
