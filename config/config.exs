@@ -12,6 +12,8 @@ config :querylogging, Querylogging.Repo,
   hostname: "localhost",
   database: "query_logging ",  # Use a different database for development
   pool_size: 10
+config :querylogging, :daemon,
+  db_logging: true
 
 config :querylogging,
   ecto_repos: [Querylogging.Repo],

@@ -9,16 +9,9 @@ defmodule QueryloggingWeb.Middleware.QueryLogger do
     variables = resolution.context[:absinthe_variables] || %{}
     Logger.debug("Query String: #{query_string}, Variables: #{inspect(variables)}")
     start_time = System.monotonic_time()
-
-
     result = resolution
-
     end_time = System.monotonic_time()
-
-
     execution_time = System.convert_time_unit(end_time - start_time, :native, :millisecond)
-
-
     error_message =
       if resolution.errors != [] do
         "Query failed: #{inspect(resolution.errors)}"

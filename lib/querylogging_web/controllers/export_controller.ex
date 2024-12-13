@@ -5,7 +5,7 @@ defmodule QueryloggingWeb.ExportController do
   alias Querylogging.QueryLogExporter
 
   def export_logs(conn, _params) do
-    # Fetch logs from the database
+
     query_logs = Repo.all(QueryLogEntry)
 
     # Generate CSV file
