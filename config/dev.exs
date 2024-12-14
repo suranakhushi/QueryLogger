@@ -28,6 +28,7 @@ config :querylogging, QueryloggingWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:querylogging, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:querylogging, ~w(--watch)]}
   ]
+  config :querylogging, :db_logging, false
 
 # ## SSL Support
 #

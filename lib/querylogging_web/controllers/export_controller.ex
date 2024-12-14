@@ -8,10 +8,7 @@ defmodule QueryloggingWeb.ExportController do
 
     query_logs = Repo.all(QueryLogEntry)
 
-    # Generate CSV file
     QueryLogExporter.export_to_csv(query_logs)
-
-    # Serve the file as a downloadable attachment
     conn
     |> put_resp_content_type("text/csv")
     |> put_resp_header("content-disposition", "attachment; filename=query_logs.csv")

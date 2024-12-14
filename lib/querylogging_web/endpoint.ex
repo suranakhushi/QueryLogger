@@ -1,5 +1,12 @@
 defmodule QueryloggingWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :querylogging
+  plug Plug.ErrorHandler
+
+defp handle_errors(conn, %{kind: kind, reason: reason, stack: stack}) do
+  Logger.error("Unhandled Error: #{inspect(reason)}")
+  Logger.error("Kind: #{inspect(kind)}")
+  Logger.error("Stacktrace: #{inspect(stack)}")
+end
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.

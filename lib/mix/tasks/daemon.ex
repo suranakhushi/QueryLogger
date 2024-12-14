@@ -18,7 +18,6 @@ defmodule Mix.Tasks.QueryLogger.Daemon do
   def run(args) do
     Mix.Task.run("app.start")
 
-    # Parse CLI arguments to override config
     db_logging = parse_args(args)
 
     Querylogging.CLI.Daemon.start(db: db_logging)

@@ -10,10 +10,21 @@ config :querylogging, Querylogging.Repo,
   username: "khushi",
   password: "anupchand@18",
   hostname: "localhost",
-  database: "query_logging ",  # Use a different database for development
+  database: "query_logging", # Fixed extra space
   pool_size: 10
-config :querylogging, :daemon,
-  db_logging: true
+
+# Daemon configuration
+config :querylogging,
+  ecto_repos: [Querylogging.Repo],
+  generators: [timestamp_type: :utc_datetime],
+  daemon: [
+    db_logging: false
+  ]
+
+# Absinthe error handling configuration
+config :absinthe, :error_handling,
+  handler: {Querylogging.ErrorHandler, :handle_errors}
+
 
 config :querylogging,
   ecto_repos: [Querylogging.Repo],
@@ -27,7 +38,7 @@ config :querylogging, QueryloggingWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: QueryloggingWeb.ErrorHTML, json: QueryloggingWeb.ErrorJSON],
-    layout: false
+    layout: true
   ],
   pubsub_server: Querylogging.PubSub,
   live_view: [signing_salt: "4FM8flNj"]

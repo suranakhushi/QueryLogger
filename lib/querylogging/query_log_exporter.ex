@@ -17,11 +17,11 @@ defmodule Querylogging.QueryLogExporter do
         %{} = log -> [
           log.query_string,
           log.execution_time,
-          log.error_message || "No errors", # Include error message
+          log.error_message || "No errors",
           log.created_at,
           log.updated_at
         ]
-        _ -> nil # Ignore invalid data
+        _ -> nil
       end)
       |> Enum.reject(&is_nil/1) # Remove nil values
 

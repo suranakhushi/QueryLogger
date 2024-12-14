@@ -6,7 +6,7 @@ defmodule Querylogging.QueryLogEntry do
   schema "query_logs" do
     field :query_string, :string
     field :execution_time, :integer
-    field :error_message, :string, default: nil
+    field :error_message, :string
     field :created_at, :utc_datetime, default: DateTime.utc_now() |> DateTime.truncate(:second)
     field :updated_at, :utc_datetime, default: DateTime.utc_now() |> DateTime.truncate(:second)
   end
